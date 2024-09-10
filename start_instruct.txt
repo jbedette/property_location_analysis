@@ -1,0 +1,2 @@
+turn on venv: 
+$ venv\Scripts\activate
