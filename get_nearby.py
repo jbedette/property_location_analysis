@@ -8,6 +8,7 @@ load_dotenv()
 
 # Get the Google API key from the environment variable
 API_KEY = os.getenv('GOOGLE_GEOCACHING_API_KEY')
+MY_ADDR = os.getenv('MY_ADDR')
 
 # Function to get latitude and longitude of a given address
 def get_coordinates(address):
@@ -88,7 +89,8 @@ def get_closest(address, n, keyword):
         print(f"   Distance: {place['distance_km']:.2f} km\n")
 
 if __name__ == "__main__":
-    user_address = input("Enter your address: ")
+    # user_address = input("Enter your address: ")
     # keyword = input("Enter the type of landmark you are looking for: ")
-    get_closest(user_address, 5, "restaurant")
-    get_closest(user_address, 5, "park")
+    # get_closest(user_address, 5, keyword )
+    get_closest(MY_ADDR, 5, "restaurant")
+    get_closest(MY_ADDR, 5, "park")
