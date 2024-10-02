@@ -1,0 +1,21 @@
+2024-25-09:
+    Summary: 
+        began logging, summary of work to current point
+    Current Status: 
+        Have generalized function to go get POI's from google maps with place paramaters and search distance.
+    Concerns: 
+        Current data seems to be a lil funky, not exact enough. 
+    Next Steps: 
+        Add more data from google maps:
+            - parks
+            - bus stops
+            - ...
+
+2024-02-10:
+    Summary: 
+        1. did some testing to see what is coming back from our nearby poi search:
+            - It was looking at everything in a 5km radius, changed to 1km seems more appropriate
+            - While at a 5km radius, it didn't list the 5 closest businesses to origin point, so something is wrong there
+    Current Status: Same
+    todo: check incoming data 
+    

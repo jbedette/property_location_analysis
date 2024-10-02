@@ -1,0 +1,2 @@
+1. modify existing get_nearby to do LESS
+    - the poi's are within a tight enough area that we want to just get everything first, sort later

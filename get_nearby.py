@@ -57,8 +57,9 @@ def get_closest(address, n, keyword):
         return
     
     lat, lng = coordinates
-    # 5000 is arb num for testing
-    places = get_nearby(lat, lng, 5000, keyword )
+
+    # 1000 is 1 km distance, seems about right
+    places = get_nearby(lat, lng, 1000, keyword )
 
     if not places:
         print("No {keyword} found nearby.")
@@ -66,7 +67,10 @@ def get_closest(address, n, keyword):
 
     # Store the restaurant and distance
     distances = []
+    count = 0
     for place in places:
+        count += 1
+        print('\n',count,'.: ',place) # testing, see all nearby data
         try:
             p_lat = place['geometry']['location']['lat']
             p_lng = place['geometry']['location']['lng']
@@ -93,4 +97,4 @@ if __name__ == "__main__":
     # keyword = input("Enter the type of landmark you are looking for: ")
     # get_closest(user_address, 5, keyword )
     get_closest(MY_ADDR, 5, "restaurant")
-    get_closest(MY_ADDR, 5, "park")
+    # get_closest(MY_ADDR, 5, "park")
