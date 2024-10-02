@@ -1,2 +1,8 @@
 1. modify existing get_nearby to do LESS
     - the poi's are within a tight enough area that we want to just get everything first, sort later
+    [] separate concerns, probably want to get raw data 
+2. Data plan, 
+    [] store data
+    [] get more data types
+    [] remove redundancies
+    [] check for accuracy

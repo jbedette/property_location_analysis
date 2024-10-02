@@ -49,9 +49,23 @@ def get_nearby(lat, lng, radius, keyword):
 def calculate_distance(loc1, loc2):
     return geodesic(loc1, loc2).kilometers
 
-def get_closest(origin_coord, keyword, places, num_results):
+# Main function to get closest restaurants
+def get_closest(address, n, keyword):
+    coordinates = get_coordinates(address)
+    if not coordinates:
+        print("Address not found.")
+        return
+    
+    lat, lng = coordinates
+    # 5000 is arb num for testing
+    places = get_nearby(lat, lng, 5000, keyword )
+    places = get_nearby(lat, lng, 500, keyword )
+
+    if not places:
+        print("No {keyword} found nearby.")
+        return
+
     # Store the restaurant and distance
-    lat, lng = origin_coord
     distances = []
     for place in places:
         # print('\n',place) # testing, see all nearby data
@@ -69,55 +83,16 @@ def get_closest(origin_coord, keyword, places, num_results):
             continue
 
     # Sort restaurants by distance and return the closest ones
-    closest = sorted(distances, key=lambda x: x['distance_km'])[:num_results]
+    closest = sorted(distances, key=lambda x: x['distance_km'])[:n]
 
     for i, place in enumerate(closest, 1):
         print(f"{i}. {place['name']}")
-        print(f"   address: {place['address']}")
-        print(f"   distance: {place['distance_km']:.2f} km\n")
-    
-    return closest
-
-# Main function to get closest restaurants
-def get_nearby_poi(address, keyword, radius_meters, num_results):
-    coordinates = get_coordinates(address)
-    if not coordinates:
-        print("Address not found.")
-        return
-    
-    lat, lng = coordinates
-    places = get_nearby(lat, lng, radius_meters, keyword )
-
-    if not places:
-        print("No {keyword} found nearby.")
-        return
-
-    closest = get_closest(coordinates, keyword, places, num_results )
-
-    return places, closest
-
+        print(f"   Address: {place['address']}")
+        print(f"   Distance: {place['distance_km']:.2f} km\n")
 
 if __name__ == "__main__":
     # user_address = input("Enter your address: ")
     # keyword = input("Enter the type of landmark you are looking for: ")
-    results = []
-    keywords = ["restaurant","park"]
-    radius_meters = 1000
-    num_results = 5
-    # keyword = "restaurant"
-    for keyword in keywords:
-        places, closest = get_nearby_poi(MY_ADDR, keyword, radius_meters, num_results)
-        results.append({
-            'keyword': keyword,
-            'places': places,
-            'closest' : closest
-        })
-    
-    # for result in results:
-    #     print('\n',keyword)
-    #     # for i, c in enumerate(closest, 1):
-    #     #     print(f"{i}. {c['name']}")
-    #     #     print(f"   address: {c['address']}")
-    #     #     print(f"   distance: {c['distance_km']:.2f} km\n")
-    #     print('\n',places)
-            
+    # get_closest(user_address, 5, keyword )
+    get_closest(MY_ADDR, 5, "restaurant")
+    # get_closest(MY_ADDR, 5, "park")

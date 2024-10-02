@@ -16,6 +16,11 @@
         1. did some testing to see what is coming back from our nearby poi search:
             - It was looking at everything in a 5km radius, changed to 1km seems more appropriate
             - While at a 5km radius, it didn't list the 5 closest businesses to origin point, so something is wrong there
-    Current Status: Same
-    todo: check incoming data 
+        2. I refactored to separate the get-nearby from get-closest
+            - likely at this point 
+    Current Status: Refactored some, mostly same point
+    todo: 
+        [x] check incoming data 
+        [] separate concerns
+        [] store data
     
