@@ -71,10 +71,10 @@ def get_closest(origin_coord, keyword, places, num_results):
     # Sort restaurants by distance and return the closest ones
     closest = sorted(distances, key=lambda x: x['distance_km'])[:num_results]
 
-    for i, place in enumerate(closest, 1):
-        print(f"{i}. {place['name']}")
-        print(f"   address: {place['address']}")
-        print(f"   distance: {place['distance_km']:.2f} km\n")
+    # for i, place in enumerate(closest, 1):
+    #     print(f"{i}. {place['name']}")
+    #     print(f"   address: {place['address']}")
+    #     print(f"   distance: {place['distance_km']:.2f} km\n")
     
     return closest
 
@@ -101,23 +101,29 @@ if __name__ == "__main__":
     # user_address = input("Enter your address: ")
     # keyword = input("Enter the type of landmark you are looking for: ")
     results = []
-    keywords = ["restaurant","park"]
+
+    keywords = [
+                "restaurant",
+                "park"
+                ]
     radius_meters = 1000
     num_results = 5
     # keyword = "restaurant"
     for keyword in keywords:
         places, closest = get_nearby_poi(MY_ADDR, keyword, radius_meters, num_results)
+        # print(closest)
         results.append({
             'keyword': keyword,
             'places': places,
-            'closest' : closest
+            'close': closest
         })
     
-    # for result in results:
+    
+
     #     print('\n',keyword)
-    #     # for i, c in enumerate(closest, 1):
-    #     #     print(f"{i}. {c['name']}")
-    #     #     print(f"   address: {c['address']}")
-    #     #     print(f"   distance: {c['distance_km']:.2f} km\n")
-    #     print('\n',places)
+    #     print(closest)
+        # for i, c in enumerate(closest, 1):
+        #     print(f"{i}. {c['name']}")
+        #     print(f"   address: {c['address']}")
+        #     print(f"   distance: {c['distance_km']:.2f} km\n")
             
