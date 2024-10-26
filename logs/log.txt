@@ -24,3 +24,13 @@
         [] separate concerns
         [] store data
     
+2024-26-10:
+    summary:
+        1. returning after a break
+    current status:
+        1. some version issues with python3, fixed. now moving from specific old version to abstracted get_nearby
+    did: added more keywords to check
+    todo:
+        [] reorient, lost in gampelan right now
+        [] separate out things, too much going on in main
+

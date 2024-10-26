@@ -1,2 +1,5 @@
 turn on venv: 
 $ venv\Scripts\activate
+
+run the program:
+    python3 ./get_nearby.py
