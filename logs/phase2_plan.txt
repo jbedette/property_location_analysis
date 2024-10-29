@@ -1,0 +1,2 @@
+now that we have data we want to define and find clusters of stuff.
+    - Algo DBSCAN (Density-Based Spatial Clustering of Applications with Noise)

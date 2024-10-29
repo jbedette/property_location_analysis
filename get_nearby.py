@@ -62,17 +62,16 @@ def get_nearby(lat, lng, radius, keyword):
 # Function to calculate the distance between two points
 def calculate_distance(loc1, loc2):
     # debug
-    # print(f"{inspect.currentframe().f_code.co_name}")
     tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
     # debug
     return geodesic(loc1, loc2).kilometers
 
 def get_closest(origin_coord, keyword, places, num_results):
     # debug
-    # print(f"{inspect.currentframe().f_code.co_name}")
     tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
     # debug
-    # Store the restaurant and distance
+
+    # Store the poi and distance
     lat, lng = origin_coord
     distances = []
     for place in places:
@@ -92,18 +91,12 @@ def get_closest(origin_coord, keyword, places, num_results):
 
     # Sort restaurants by distance and return the closest ones
     closest = sorted(distances, key=lambda x: x['distance_km'])[:num_results]
-
-    # for i, place in enumerate(closest, 1):
-    #     print(f"{i}. {place['name']}")
-    #     print(f"   address: {place['address']}")
-    #     print(f"   distance: {place['distance_km']:.2f} km\n")
     
     return closest
 
 # Main function to get closest restaurants
 def get_nearby_poi(address, keyword, radius_meters, num_results):
     # debug
-    # print(f"{inspect.currentframe().f_code.co_name}")
     tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
     # debug
     coordinates = get_coordinates(address)
@@ -250,7 +243,7 @@ if __name__ == "__main__":
                 print(f"    addr: {addr['address']}")
                 print(f"    dist: {addr['distance_km']:.2f} km\n")
 
-    print(f"==========\found:")
+    print(f"==========\nfound:")
     for i,r in enumerate(results,start=1):
         print(f"{i}. {r['keyword']}")
     print(f"==========\nFound Score: {found_score}\n")

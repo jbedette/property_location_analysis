@@ -1,4 +1,4 @@
-2024-25-09:
+2024-09-25:
     Summary: 
         began logging, summary of work to current point
     Current Status: 
@@ -11,7 +11,7 @@
             - bus stops
             - ...
 
-2024-02-10:
+2024-10-02:
     Summary: 
         1. did some testing to see what is coming back from our nearby poi search:
             - It was looking at everything in a 5km radius, changed to 1km seems more appropriate
@@ -24,7 +24,7 @@
         [] separate concerns
         [] store data
     
-2024-26-10:
+2024-10-26:
     summary:
         1. returning after a break
     current status:
@@ -33,4 +33,36 @@
     todo:
         [] reorient, lost in gampelan right now
         [] separate out things, too much going on in main
+
+2024-10-29:
+    summary: 
+        1. try to implement other steps in phase 1, police data
+        2. move distance geopy calc to tools
+    did:  
+        1. downloaded pdx campsite and cleanup data in both csv and geojson
+        2. `pdx_data_download.py` created arcgis download scheduling first draft, doesn't work, isn't quite what i want to do
+        3. `prox_campsite_cleanup.py` made a file to manage proximity of provided address to take in downloaded map data from pdx and calculate distance to reported problems
+        4. copied geopy distance calc func to tools, untested implementation
+        5. `prox_campsite_cleanup`: write first draft for getting sites within radius 
+        6. got a demo file for cluster dbscan algo
+    todo: 
+        1. do stuff with the pdx data
+            - analyze for hotspots and clusters
+            - come up with some sort of scoring analysis for provided address
+        2. test out radius points pdx sites
+        3. refactor 
+            want to
+                - have main just call stuff and pass things around
+                - have initial coordinate getting from string address seperate
+                - have calc distance seperate
+            get_nearby
+                - should only have keyword and google api poi stuff
+            main
+                - call stuff
+            tools
+                - move debug out
+                - have distance calc
+                - have get coord from string addr
+        4. figure out how i want clusters of things to work 
+            - safety issues different from poi
 

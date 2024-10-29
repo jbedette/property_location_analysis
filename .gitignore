@@ -4,3 +4,4 @@ venv/
 *.un*
 old/
 scratch/
+data/
