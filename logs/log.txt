@@ -66,3 +66,27 @@
         4. figure out how i want clusters of things to work 
             - safety issues different from poi
 
+2024-10-31:
+    summary:
+        worked on processing campsite data, little bit funky
+        seems to working in basic sense
+    concerns: 
+        1. way too many sites
+        2. too slow
+    solutions:
+        general:
+            probably want to process data set before running funcs
+                - collapse duplicates into a count
+        num sites:
+            duplicate info, is useful, not sure whether to disregard dupes or rate higher
+            dates 
+        speed:
+            preprocess
+            algorithm
+    todo:
+        preprocess data
+            1. collapse duplicates into count
+            2. find some way of analyzing dates too 
+            3. clustering
+        
+
