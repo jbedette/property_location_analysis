@@ -5,3 +5,4 @@ venv/
 old/
 scratch/
 data/
+processed_data/

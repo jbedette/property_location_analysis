@@ -88,5 +88,16 @@
             1. collapse duplicates into count
             2. find some way of analyzing dates too 
             3. clustering
-        
 
+2024-11-1:
+    today: preprocess
+    summary: 
+        did some testing and work in preprocessing campsite data
+            - split sites into clusters of reports within 100 meters
+    concerns:
+        - not working as expected, too many, too many things seemingly not counting
+            + clustering maybe not working right
+            + distances might be off 
+            + dates not being captured
+    
+            

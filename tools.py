@@ -1,12 +1,13 @@
 import requests
 from geopy.distance import geodesic
 
+def calculate_distance(loc1, loc2):
+    return geodesic(loc1, loc2).kilometers
+
 def print_debug(name, debug_true):
     if(debug_true):
         print(f"{name}")
 
-def calculate_distance(loc1, loc2):
-    return geodesic(loc1, loc2).kilometers
 
 # to be moved here, just placeholder for now
 # Function to get latitude and longitude of a given address

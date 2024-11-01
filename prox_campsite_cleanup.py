@@ -57,29 +57,47 @@ def addr_proximity_to_locations(origin_coord,rad_dist):
 
 # end simple
 
-files = [
-    "./data/IRP_Campsite_Reports.geojson",
-    "./data/IRP_Clean_Sites.geojson"
-]
+# files = [
+#     "./data/IRP_Campsite_Reports.geojson",
+#     "./data/IRP_Clean_Sites.geojson"
+# ]
 
-def data_coord_fix(coord):
-    return (coord[1],coord[0])
+# def data_coord_fix(coord):
+#     return (coord[1],coord[0])
 
-def load_parse_data(file):
+# def load_parse_data(file):
 
-    # debug
-    tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
-    # debug
+#     # debug
+#     tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
+#     # debug
 
-    sites = []
+#     sites = []
 
-    with open(file) as g:
-        data = json.load(g)
+#     with open(file) as g:
+#         data = json.load(g)
 
-    for site in data['features']:
-        sites.append(site)
+#     for site in data['features']:
+#         sites.append(site)
     
-    return sites
+#     return sites
+
+
+# def addr_prox_to_locations(origin_coord,rad_dist):
+
+#     # debug
+#     tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
+#     # debug
+
+    
+#     campsite_data = load_parse_data(files[0])
+#     # cleanup_data = load_parse_data(files[1])
+
+#     campsites = prox_to_data(origin_coord, rad_dist, campsite_data)
+#     # cleanups = prox_to_data(origin_coord, rad_dist, cleanup_data)
+
+#     cleanups = []
+
+#     return campsites, cleanups
 
 def prox_to_data (origin_coord, rad_dist, data):
 
@@ -89,31 +107,18 @@ def prox_to_data (origin_coord, rad_dist, data):
 
     sites = []
     for site in data:
-
-    # # debug
-    #     print(f"============\n{site['geometry']['coordinates']}")
-    #     print(f"\n{origin_coord}\n")
-    # return sites
-    # # debug
-
-        dist = tools.calculate_distance(origin_coord,data_coord_fix(site['geometry']['coordinates']))
+        # dist = tools.calculate_distance(origin_coord,data_coord_fix(site['geometry']['coordinates']))
+        dist = tools.calculate_distance(origin_coord,site['coordinates'])
         if(dist <= rad_dist):
             sites.append({'point': site,'dist_km': dist})
     return sorted(sites,key=lambda x: x['dist_km'])
 
-def addr_prox_to_locations(origin_coord,rad_dist):
-
-    # debug
-    tools.print_debug(inspect.currentframe().f_code.co_name,debug_true)
-    # debug
-
+def origin_prox_to_data(origin_coord,rad_dist):
+    nearby_camp_hotspots = []
+    with open("./processed_data/campsites_aggreg.json") as f:
+        campsites = json.load(f)
+    nearby_camp_hotspots = prox_to_data(origin_coord,rad_dist,campsites)
+    for i, camp in enumerate(nearby_camp_hotspots):
+        print(f"{i}:{camp}")
     
-    campsite_data = load_parse_data(files[0])
-    # cleanup_data = load_parse_data(files[1])
-
-    campsites = prox_to_data(origin_coord, rad_dist, campsite_data)
-    # cleanups = prox_to_data(origin_coord, rad_dist, cleanup_data)
-
-    cleanups = []
-
-    return campsites, cleanups
+    
