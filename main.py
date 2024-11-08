@@ -2,11 +2,13 @@ from dotenv import load_dotenv
 import os
 
 # my files
-import get_nearby
-import keywords
+# import get_nearby
+# import keywords
 import tools
-import prox_campsite_cleanup
-import process_data
+# import prox_campsite_cleanup
+# import process_data
+import data_compile
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,25 +22,5 @@ radius_meters = 1000
 num_results = 5
 origin_coord = tools.get_coordinates(MY_ADDR,API_KEY)
 
-# get_nearby.process_poi(keywords.keywords, radius_meters, num_results, origin_coord, API_KEY)
+data_compile.get_data(origin_coord,API_KEY)
 
-#### safety
-# campsites, cleanups = prox_campsite_cleanup.addr_proximity_to_locations(origin_coord,radius_meters) 
-
-# radius_meters/1000 because func works in km
-# campsites, cleanups = prox_campsite_cleanup.addr_prox_to_locations(origin_coord,radius_meters/1000) 
-
-# if not campsites:
-#     print(f"no campsites found nearby")
-# else:
-#     print(f"=========\nCampsites\n")
-#     for i,camp in enumerate(campsites,start=1):
-
-#         print(f"{i}: {camp['dist_km']}")
-#     print(f"\n=========")
-
-# prox_campsite_cleanup.origin_prox_to_data(origin_coord,.2)
-
-### process data
-    
-process_data.process()

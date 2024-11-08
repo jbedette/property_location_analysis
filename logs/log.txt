@@ -99,5 +99,14 @@
             + clustering maybe not working right
             + distances might be off 
             + dates not being captured
-    
+2024-11-4:
+    today: refactor
+    summary:  
+        cleaned up mess, made data_compile.py to take things out of main
+        have basic counts made
+    concerns:
+        i'm going and getting data and processing it every times, SLOW
+            - make testing data suite
+        
+
             
