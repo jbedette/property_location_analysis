@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Redfin Location Plotter",
+    "version": "1.0",
+    "description": "Extracts address details from Redfin URLs and plots nearby points on a map.",
+    "permissions": [
+      "tabs",
+      "activeTab"
+    ],
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "browser_action": {
+      "default_title": "Plot Nearby Points"
+    }
+  }
+  
