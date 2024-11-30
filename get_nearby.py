@@ -26,7 +26,9 @@ def get_closest(origin_coord, keyword, places, num_results):
             distances.append({
                 'name': place['name'],
                 'address': place['vicinity'],
-                'distance_km': distance
+                'distance_km': distance,
+                'lat': place['geometry']['location']['lat'],
+                'lng': place['geometry']['location']['lng']
             })
         except KeyError:
             print(f"Error retrieving data for a {keyword}: {place}")
@@ -115,6 +117,9 @@ def process_poi(keywords,radius_meters,num_results,origin_coord, KEY):
         tools.print_debug("=====>" + str(keyword),debug_true)
         #debug
 
+        # # loading bar
+        # tools.loading_bar()
+
         places, closest = get_nearby_poi(origin_coord, KEY, keyword, radius_meters, num_results)
 
         if not places:
@@ -148,7 +153,7 @@ def print_poi_data(results,not_found,flag):
         print(f"==========\nfound:")
         for i,r in enumerate(results,start=1):
             print(f"{i}. {r['keyword']}")
-        print(f"==========\nFound Score: {found_score}\n")
+        # print(f"==========\nFound Score: {found_score}\n")
 
 
         print(f"============\nnot found:")
@@ -156,5 +161,21 @@ def print_poi_data(results,not_found,flag):
             print(f"{i}. {result}")
         print(f"")
 
+def get_poi_info(results):
+    out = [] 
+    for result in results:
+        # print("\n=========\n", result['keyword'], '\n')
+        for i, addr in enumerate(result['close'],1):
+                out.append({
+                    'num':i,
+                    'category':"good",
+                    'keyword':result['keyword'],
+                    'name':addr['name'],
+                    'addr':addr['address'],
+                    'dist':addr['distance_km'],
+                    'lat':addr['lat'],
+                    'lng':addr['lng']
+                    })
+    return out
             
 

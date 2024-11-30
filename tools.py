@@ -1,4 +1,5 @@
 import requests
+import sys
 from geopy.distance import geodesic
 
 def calculate_distance(loc1, loc2):
@@ -27,3 +28,6 @@ def get_coordinates(address, KEY):
     except requests.exceptions.RequestException as e:
         print(f"Error fetching geocoding data: {e}")
         return None
+
+def loading_bar():
+    print('.', end=" ")
